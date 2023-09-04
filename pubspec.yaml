@@ -1,0 +1,22 @@
+name: authentication
+description: Biblioteca de autenticação
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.1.0
+
+dependencies:
+  appwrite: ^9.0.1
+  toggle_config:
+    git: 
+      url: https://github.com/manga-easy/lib_toggle_config.git
+      ref: v1.1.1
+  manga_easy_sdk:
+    git: 
+      url: https://github.com/manga-easy/manga_easy_sdk.git
+      ref: v1.3.0
+  jwt_decoder: ^2.0.1
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.21.0
