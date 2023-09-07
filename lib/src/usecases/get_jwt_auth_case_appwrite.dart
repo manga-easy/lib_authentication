@@ -10,16 +10,21 @@ class GetJWTAuthCaseAppwrite extends GetJWTAuthCase {
 
   GetJWTAuthCaseAppwrite(this._authService);
   @override
-  Future<String> call() async {
-    await complete?.future;
-    if (isValid()) {
-      return Global.jwt!;
+  Future<String?> call() async {
+    try {
+      await complete?.future;
+      if (isValid()) {
+        return Global.jwt!;
+      }
+      complete = Completer();
+      Global.jwt = await _authService.getJwt();
+      complete!.complete();
+    } on Exception catch (e) {
+      Helps.log(e);
+      complete!.complete();
     }
-    complete = Completer();
-    Global.jwt = await _authService.getJwt();
-    complete!.complete();
 
-    return Global.jwt!;
+    return Global.jwt;
   }
 
   bool isValid() {

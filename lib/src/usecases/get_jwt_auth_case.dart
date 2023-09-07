@@ -1,5 +1,5 @@
 import 'dart:async';
 
 abstract class GetJWTAuthCase {
-  Future<String> call();
+  Future<String?> call();
 }
